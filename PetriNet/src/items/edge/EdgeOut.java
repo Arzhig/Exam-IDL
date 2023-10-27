@@ -37,8 +37,9 @@ public class EdgeOut extends Edge{
 	}
 	/**
      * Triggers the transition associated with this outgoing edge by removing tokens from the connected place.
+	 * @throws BadEntryException 
      */
-	public void trigger() {
+	public void trigger() throws BadEntryException {
 		this.getPlace().remove(this.getValue());
 	}
 
