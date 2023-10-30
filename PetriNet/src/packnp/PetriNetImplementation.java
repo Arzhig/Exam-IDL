@@ -2,8 +2,9 @@ package packnp;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import exceptions.BadEntryException;
+import exceptions.DoubleEdgeException;
+import exceptions.IncorrectEdgeException;
 import items.Place;
 import items.Transition;
 import items.edge.EdgeIn;
@@ -57,7 +58,7 @@ public class PetriNetImplementation implements PetriNet{
 	}
 
 	@Override
-	public void add(Place place, Transition transition, int value) throws BadEntryException {
+	public void add(Place place, Transition transition, int value) throws IncorrectEdgeException {
 		boolean exists = false;
 		for(EdgeOut e : transition.getOutEdges()) {
 			if (e.getPlace()== place) {exists = true;}
@@ -67,12 +68,12 @@ public class PetriNetImplementation implements PetriNet{
 			transition.add(outEdge);
 		}
 		else {
-			throw new BadEntryException("Already exisiting edge between this place and transition");
+			throw new DoubleEdgeException("Already exisiting edge between this place and transition");
 		}
 	}
 
 	@Override
-	public void addZero(Place place, Transition transition) throws BadEntryException {
+	public void addZero(Place place, Transition transition) throws IncorrectEdgeException {
 		boolean exists = false;
 		for (EdgeOut e : transition.getOutEdges()) {
 			if (e.getPlace() == place) {exists = true;}
@@ -82,12 +83,12 @@ public class PetriNetImplementation implements PetriNet{
 			transition.add(zeroEdge);
 		}
 		else {
-			throw new BadEntryException("Already existing edge between this place and transition.");
+			throw new DoubleEdgeException("Already existing edge between this place and transition.");
 		}
 	}
 
 	@Override
-	public void addEmpty(Place place, Transition transition) throws BadEntryException {
+	public void addEmpty(Place place, Transition transition) throws IncorrectEdgeException {
 		boolean exists = false;
 		for (EdgeOut e : transition.getOutEdges()) {
 			if (e.getPlace() == place) {exists = true;}
@@ -97,12 +98,12 @@ public class PetriNetImplementation implements PetriNet{
 			transition.add(emptyEdge);	
 		}
 		else {
-			throw new BadEntryException("Already existing edge between this place and transition.");
+			throw new DoubleEdgeException("Already existing edge between this place and transition.");
 		}
 	}
 
 	@Override
-	public void add(Transition transition, Place place, int value) throws BadEntryException {
+	public void add(Transition transition, Place place, int value) throws IncorrectEdgeException {
 
 		boolean exists = false;
 		for(EdgeIn e : transition.getInEdges()) {
@@ -113,12 +114,12 @@ public class PetriNetImplementation implements PetriNet{
 			transition.add(inEdge);
 		}
 		else {
-			throw new BadEntryException("Already exisiting edge between this transition and place");
+			throw new DoubleEdgeException("Already exisiting edge between this transition and place");
 		}
 	}
 
 	@Override
-	public void step(Transition transition) {
+	public void step(Transition transition) throws IncorrectEdgeException {
 		transition.step();
 	}
 
