@@ -61,7 +61,7 @@ public class PetriNetImplementation implements PetriNet{
 	public void add(Place place, Transition transition, int value) throws IncorrectEdgeException {
 		boolean exists = false;
 		for(EdgeOut e : transition.getOutEdges()) {
-			if (e.getPlace()== place) {exists = true;}
+			if (e.getPlace().equals(place)) {exists = true;}
 		}
 		if (exists == false) {
 			EdgeOut outEdge = new EdgeOut(value, place);
@@ -76,7 +76,7 @@ public class PetriNetImplementation implements PetriNet{
 	public void addZero(Place place, Transition transition) throws IncorrectEdgeException {
 		boolean exists = false;
 		for (EdgeOut e : transition.getOutEdges()) {
-			if (e.getPlace() == place) {exists = true;}
+			if (e.getPlace().equals(place)) {exists = true;}
 		}
 		if (!exists) {
 			EdgeZero zeroEdge = new EdgeZero(place);
@@ -91,7 +91,7 @@ public class PetriNetImplementation implements PetriNet{
 	public void addEmpty(Place place, Transition transition) throws IncorrectEdgeException {
 		boolean exists = false;
 		for (EdgeOut e : transition.getOutEdges()) {
-			if (e.getPlace() == place) {exists = true;}
+			if (e.getPlace().equals(place)) {exists = true;}
 		}
 		if (!exists) {
 			EdgeEmpty emptyEdge = new EdgeEmpty(place);
@@ -107,7 +107,7 @@ public class PetriNetImplementation implements PetriNet{
 
 		boolean exists = false;
 		for(EdgeIn e : transition.getInEdges()) {
-			if (e.getPlace()==place) {exists = true;}
+			if (e.getPlace().equals(place)) {exists = true;}
 		}
 		if (exists == false) {
 			EdgeIn inEdge = new EdgeIn(value, place);

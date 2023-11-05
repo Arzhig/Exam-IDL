@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +13,8 @@ import exceptions.DoubleEdgeException;
 import exceptions.IncorrectEdgeException;
 import items.Place;
 import items.Transition;
+import items.edge.EdgeIn;
+import items.edge.EdgeOut;
 import junit.framework.AssertionFailedError;
 import packnp.PetriNetImplementation;
 
@@ -103,22 +108,133 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testAddEdgeOut() {
-		fail("Not yet implemented");
+
+		System.out.println("Testing addition of EdgeOut in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		//populating the net
+		Transition t1 = new Transition();
+		net.add(t1);
+		int nTokens = 3;
+		
+		try {	
+			Place p1 = new Place(4);
+			net.add(p1);
+			net.add(net.getPlace(0),net.getTransition(0),nTokens);
+			EdgeOut e1 = net.getTransition(0).getOutEdges().get(0);
+			Assertions.assertEquals(e1.getValue(), nTokens);
+			Assertions.assertEquals(e1.getPlace(), p1);
+		}
+		catch (DoubleEdgeException e) {
+		    System.out.println("Err x : Added an edge where one already exists.");
+		}
+		
+		catch (BadEntryException e) {
+		    System.out.println("Err x : The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge added and the edge created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
 	void testAddEdgeZero() {
-		fail("Not yet implemented");
+		System.out.println("Testing addition of EdgeZero in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		//populating the net
+		Transition t1 = new Transition();
+		net.add(t1);
+		
+		try {	
+			Place p1 = new Place(4);
+			net.add(p1);
+			net.addZero(net.getPlace(0),net.getTransition(0));
+			EdgeOut e1 = net.getTransition(0).getOutEdges().get(0);
+			Assertions.assertEquals(e1.getValue(), 0);
+			Assertions.assertEquals(e1.getPlace(), p1);
+		}
+		catch (DoubleEdgeException e) {
+		    System.out.println("Err x : Added an edge where one already exists.");
+		}
+		
+		catch (BadEntryException e) {
+		    System.out.println("Err x : The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge added and the edge created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
 	void testAddEdgeEmpty() {
-		fail("Not yet implemented");
+		System.out.println("Testing addition of EdgeEmpty in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		//populating the net
+		Transition t1 = new Transition();
+		net.add(t1);
+		
+		try {	
+			Place p1 = new Place(4);
+			net.add(p1);
+			net.addEmpty(net.getPlace(0),net.getTransition(0));
+			EdgeOut e1 = net.getTransition(0).getOutEdges().get(0);
+			Assertions.assertEquals(e1.getValue(), 1);
+			Assertions.assertEquals(e1.getPlace(), p1);
+		}
+		catch (DoubleEdgeException e) {
+		    System.out.println("Err x : Added an edge where one already exists.");
+		}
+		
+		catch (BadEntryException e) {
+		    System.out.println("Err x : The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge added and the edge created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
 	void testAddEdgeIn() {
-		fail("Not yet implemented");
+		System.out.println("Testing addition of EdgeIn in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		//populating the net
+		Transition t1 = new Transition();
+		net.add(t1);
+		int nTokens = 2;
+		
+		try {	
+			Place p1 = new Place(4);
+			net.add(p1);
+			net.add(net.getTransition(0), net.getPlace(0), nTokens);
+			EdgeIn e1 = net.getTransition(0).getInEdges().get(0);
+			Assertions.assertEquals(e1.getValue(), 1);
+			Assertions.assertEquals(e1.getPlace(), p1);
+		}
+		catch (DoubleEdgeException e) {
+		    System.out.println("Err x : Added an edge where one already exists.");
+		}
+		
+		catch (BadEntryException e) {
+		    System.out.println("Err x : The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge added and the edge created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
@@ -128,7 +244,33 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testRemovePlace() {
-		fail("Not yet implemented");
+		System.out.println("Testing addition of EdgeIn in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		//populating the net
+		try {
+			Place p1 = new Place(6);
+			Place p2 = new Place(2);
+			Place p3 = new Place(3);
+			net.add(p1);
+			net.add(p2);
+			net.add(p3);
+			
+			net.remove(p2);
+			List<Place> lstExpected = new LinkedList<Place>();
+			lstExpected.add(p1);
+			lstExpected.add(p3);
+			Assertions.assertEquals(net.getPlaces(), lstExpected);
+		}
+		catch (BadEntryException e) {
+		    System.out.println("Err x : The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The place added and the edge created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
