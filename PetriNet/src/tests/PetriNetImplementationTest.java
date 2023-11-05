@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.BadEntryException;
 import exceptions.DoubleEdgeException;
-import exceptions.IncorrectEdgeException;
 import items.Place;
 import items.Transition;
 import items.edge.EdgeIn;
@@ -244,7 +243,7 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testRemovePlace() {
-		System.out.println("Testing addition of EdgeIn in a PetriNet");
+		System.out.println("Testing removal of a place in a PetriNet");
 		
 		PetriNetImplementation net = new PetriNetImplementation();
 		//populating the net
@@ -266,7 +265,7 @@ class PetriNetImplementationTest {
 		    System.out.println("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The place added and the edge created are different.");
+			System.out.println("Err x : The place has not been removed or the wrong one was removed.");
 		}
 		catch (Exception e) {
 			System.out.println("Err x : Exception not handled : " + e);
@@ -275,7 +274,29 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testRemoveTransition() {
-		fail("Not yet implemented");
+		System.out.println("Testing removal of a transition in a PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		Transition t1 = new Transition();
+		Transition t2 = new Transition();
+		Transition t3 = new Transition();
+		net.add(t1);
+		net.add(t2);
+		net.add(t3);
+		List<Transition> lstExpected = new LinkedList<Transition>();
+		lstExpected.add(t1);
+		lstExpected.add(t3);
+
+		try {			
+			net.remove(t2);
+			Assertions.assertEquals(net.getTransitions(), lstExpected);
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The transition has not been removed or the wrong one was removed.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
