@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.BadEntryException;
 import exceptions.DoubleEdgeException;
+import exceptions.IncorrectEdgeException;
 import items.Place;
 import items.Transition;
 import items.edge.EdgeIn;
@@ -18,6 +19,7 @@ import junit.framework.AssertionFailedError;
 import packnp.PetriNetImplementation;
 
 class PetriNetImplementationTest {
+	
 
 	@Test
 	void testPetriNetImplementation() {
@@ -301,12 +303,96 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testRemoveEdgeOut() {
-		fail("Not yet implemented");
+		System.out.println("Testing removal of an edge in a PetriNet");
+		
+		int n1 = 1;
+		int n2 = 5;
+		int n3 = 2;
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		Transition t1 = new Transition();
+		net.add(t1);
+
+
+		try {			
+			Place p1 = new Place(6);
+			Place p2 = new Place(3);
+			Place p3 = new Place(2);
+			net.add(p1);
+			net.add(p2);
+			net.add(p3);
+			
+			net.add(p1, t1, n1);
+			net.add(p2, t1, n2);
+			net.add(p3, t1, n3);
+			
+			EdgeOut e1 = new EdgeOut(n1,p1);
+			EdgeOut e2 = new EdgeOut(n2,p2);
+			EdgeOut e3 = new EdgeOut(n3,p3);
+
+			net.remove(e2);
+			
+			Assertions.assertEquals(net.getTransition(0).getOutEdges().get(0).getValue(), e1.getValue());
+			Assertions.assertEquals(net.getTransition(0).getOutEdges().get(0).getPlace(), e1.getPlace());
+			Assertions.assertEquals(net.getTransition(0).getOutEdges().get(1).getValue(), e3.getValue());
+			Assertions.assertEquals(net.getTransition(0).getOutEdges().get(1).getPlace(), e3.getPlace());
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge has not been removed or the wrong one was removed.");
+		}
+		catch (IncorrectEdgeException e) {
+			System.out.println("Err x : The test parameters are not correct.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 	@Test
 	void testRemoveEdgeIn() {
-		fail("Not yet implemented");
+		System.out.println("Testing removal of an edge in a PetriNet");
+		
+		int n1 = 1;
+		int n2 = 5;
+		int n3 = 2;
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		Transition t1 = new Transition();
+		net.add(t1);
+
+
+		try {			
+			Place p1 = new Place(6);
+			Place p2 = new Place(3);
+			Place p3 = new Place(2);
+			net.add(p1);
+			net.add(p2);
+			net.add(p3);
+			
+			net.add(t1, p1, n1);
+			net.add(t1, p2, n2);
+			net.add(t1, p3, n3);
+			
+			EdgeIn e1 = new EdgeIn(n1,p1);
+			EdgeIn e2 = new EdgeIn(n2,p2);
+			EdgeIn e3 = new EdgeIn(n3,p3);
+
+			net.remove(e2);
+			
+			Assertions.assertEquals(net.getTransition(0).getInEdges().get(0).getValue(), e1.getValue());
+			Assertions.assertEquals(net.getTransition(0).getInEdges().get(0).getPlace(), e1.getPlace());
+			Assertions.assertEquals(net.getTransition(0).getInEdges().get(1).getValue(), e3.getValue());
+			Assertions.assertEquals(net.getTransition(0).getInEdges().get(1).getPlace(), e3.getPlace());
+		}
+		catch (AssertionFailedError e) {
+			System.out.println("Err x : The edge has not been removed or the wrong one was removed.");
+		}
+		catch (IncorrectEdgeException e) {
+			System.out.println("Err x : The test parameters are not correct.");
+		}
+		catch (Exception e) {
+			System.out.println("Err x : Exception not handled : " + e);
+		}
 	}
 
 }
