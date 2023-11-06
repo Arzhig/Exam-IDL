@@ -165,7 +165,7 @@ public class PetriNetImplementation implements PetriNet{
 	    sb.append("List of places:\n");
 	    for (int i = 0; i < numPlaces; i++) {
 	        Place place = places.get(i);
-	        sb.append(i + 1).append(" : place with ").append(place.getToken()).append(" tokens, ");
+	        sb.append(i + 1).append(" : place with ").append(place.getToken()).append(" tokens\n");
 	    }
 
 	    sb.append("List of transitions:\n");
