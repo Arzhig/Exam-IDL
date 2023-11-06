@@ -23,5 +23,6 @@ public class Test2 {
 		net.step(net.getTransition(1));
 		System.out.println("Tokens in place : " + net.getPlace(0).getToken()); // Expected 0
 		
+		System.out.println(net.toString());
 	}
 }

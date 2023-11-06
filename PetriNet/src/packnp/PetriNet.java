@@ -94,4 +94,9 @@ public interface PetriNet {
 	*/
 	
 	public void remove(EdgeIn inEdge);
+	
+	/**
+	* Prints the current state of the network in console
+	*/
+	public String toString();
 }
