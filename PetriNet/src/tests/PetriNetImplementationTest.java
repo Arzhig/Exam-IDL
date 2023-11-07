@@ -74,13 +74,13 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getPlace(0), p1);
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("The place created and the place added are different");
+			fail("The place created and the place added are different");
 		}
 		catch (BadEntryException e) {
-			System.out.println("The place created was given incorrect arguments");
+			fail("The place created was given incorrect arguments");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : exception not handled : " + e);
+			fail("Err x : exception not handled : " + e);
 		    e.printStackTrace();
 		}
 		
@@ -98,10 +98,10 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getTransition(0), t1);
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("The transition created and the transition added are different");
+			fail("The transition created and the transition added are different");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : exception not handled : " + e);
+			fail("Err x : exception not handled : " + e);
 		    e.printStackTrace();
 		}
 	}
@@ -126,17 +126,17 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(e1.getPlace(), p1);
 		}
 		catch (DoubleEdgeException e) {
-		    System.out.println("Err x : Added an edge where one already exists.");
+			fail("Err x : Added an edge where one already exists.");
 		}
 		
 		catch (BadEntryException e) {
-		    System.out.println("Err x : The place created was given incorrect arguments.");
+			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge added and the edge created are different.");
+			fail("Err x : The edge added and the edge created are different.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -158,17 +158,17 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(e1.getPlace(), p1);
 		}
 		catch (DoubleEdgeException e) {
-		    System.out.println("Err x : Added an edge where one already exists.");
+			fail("Err x : Added an edge where one already exists.");
 		}
 		
 		catch (BadEntryException e) {
-		    System.out.println("Err x : The place created was given incorrect arguments.");
+			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge added and the edge created are different.");
+			fail("Err x : The edge added and the edge created are different.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -190,17 +190,17 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(e1.getPlace(), p1);
 		}
 		catch (DoubleEdgeException e) {
-		    System.out.println("Err x : Added an edge where one already exists.");
+			 fail("Err x : Added an edge where one already exists.");
 		}
 		
 		catch (BadEntryException e) {
-		    System.out.println("Err x : The place created was given incorrect arguments.");
+			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge added and the edge created are different.");
+			fail("Err x : The edge added and the edge created are different.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -223,17 +223,17 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(e1.getPlace(), p1);
 		}
 		catch (DoubleEdgeException e) {
-		    System.out.println("Err x : Added an edge where one already exists.");
+			fail("Err x : Added an edge where one already exists.");
 		}
 		
 		catch (BadEntryException e) {
-		    System.out.println("Err x : The place created was given incorrect arguments.");
+			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge added and the edge created are different.");
+			fail("Err x : The edge added and the edge created are different.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -263,13 +263,13 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getPlaces(), lstExpected);
 		}
 		catch (BadEntryException e) {
-		    System.out.println("Err x : The place created was given incorrect arguments.");
+			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The place has not been removed or the wrong one was removed.");
+			fail("Err x : The place has not been removed or the wrong one was removed.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -293,10 +293,10 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getTransitions(), lstExpected);
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The transition has not been removed or the wrong one was removed.");
+			fail("Err x : The transition has not been removed or the wrong one was removed.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -337,13 +337,13 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getTransition(0).getOutEdges().get(1).getPlace(), e3.getPlace());
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge has not been removed or the wrong one was removed.");
+			fail("Err x : The edge has not been removed or the wrong one was removed.");
 		}
 		catch (IncorrectEdgeException e) {
-			System.out.println("Err x : The test parameters are not correct.");
+			fail("Err x : The test parameters are not correct.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
@@ -384,13 +384,13 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getTransition(0).getInEdges().get(1).getPlace(), e3.getPlace());
 		}
 		catch (AssertionFailedError e) {
-			System.out.println("Err x : The edge has not been removed or the wrong one was removed.");
+			fail("Err x : The edge has not been removed or the wrong one was removed.");
 		}
 		catch (IncorrectEdgeException e) {
-			System.out.println("Err x : The test parameters are not correct.");
+			fail("Err x : The test parameters are not correct.");
 		}
 		catch (Exception e) {
-			System.out.println("Err x : Exception not handled : " + e);
+			fail("Err x : Exception not handled : " + e);
 		}
 	}
 
