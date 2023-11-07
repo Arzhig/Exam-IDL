@@ -178,27 +178,27 @@ public class PetriNetImplementation implements PetriNet{
 	        Place place = places.get(i);
 	        sb.append(i + 1).append(" : place with ").append(place.getToken()).append(" tokens\n");
 	    }
-
+	    
 	    sb.append("List of transitions:\n");
 	    for (int i = 0; i < numTransitions; i++) {
 	        Transition transition = transitions.get(i);
 	        sb.append(i + 1).append(" : transition, ");
-	        sb.append(transition.getInEdges().size()).append(" arcs incoming, ");
-	        sb.append(transition.getOutEdges().size()).append(" arcs outgoing\n");
+	        sb.append(transition.getInEdges().size()).append(" inEdges, ");
+	        sb.append(transition.getOutEdges().size()).append(" outEdges\n");
 	    }
 
 	    sb.append("List of arcs:\n");
 	    int arcCount = 1;
 	    for (Transition transition : transitions) {
 	        for (EdgeIn inEdge : transition.getInEdges()) {
-	            sb.append(arcCount).append(" : arc with weight ").append(inEdge.getValue());
-	            sb.append(" (place with ").append(inEdge.getPlace().getToken()).append(" tokens to transition)\n");
+	            sb.append(arcCount).append(" : inEdge with weight ").append(inEdge.getValue());
+	            sb.append(" (transition to place with ").append(inEdge.getPlace().getToken()).append(" tokens)\n");
 	            arcCount++;
 	        }
 
 	        for (EdgeOut outEdge : transition.getOutEdges()) {
-	            sb.append(arcCount).append(" : arc with weight ").append(outEdge.getValue());
-	            sb.append(" (transition to place with ").append(outEdge.getPlace().getToken()).append(" tokens)\n");
+	            sb.append(arcCount).append(" : outEdge with weight ").append(outEdge.getValue());
+	            sb.append(" (place with ").append(outEdge.getPlace().getToken()).append(" tokens to transition)\n");
 	            arcCount++;
 	        }
 	    }
