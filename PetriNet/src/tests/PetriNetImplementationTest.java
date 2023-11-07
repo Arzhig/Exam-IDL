@@ -8,9 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import exceptions.BadEntryException;
+import exceptions.IncorrectArgumentException;
 import exceptions.DoubleEdgeException;
-import exceptions.IncorrectEdgeException;
+import exceptions.PetriNetException;
 import items.Place;
 import items.Transition;
 import items.edge.EdgeIn;
@@ -65,7 +65,7 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(places, net.getPlaces());
 			
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -95,7 +95,7 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(p2, net.getPlace(1));
 			
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -181,7 +181,7 @@ class PetriNetImplementationTest {
 		catch (AssertionFailedError e) {
 			fail("The place created and the place added are different.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("The place created was given incorrect arguments.");
 		}
 		catch (Exception e) {
@@ -234,7 +234,7 @@ class PetriNetImplementationTest {
 			fail("Err x : Added an edge where one already exists.");
 		}
 		
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -266,7 +266,7 @@ class PetriNetImplementationTest {
 			fail("Err x : Added an edge where one already exists.");
 		}
 		
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -298,7 +298,7 @@ class PetriNetImplementationTest {
 			 fail("Err x : Added an edge where one already exists.");
 		}
 		
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -331,7 +331,7 @@ class PetriNetImplementationTest {
 			fail("Err x : Added an edge where one already exists.");
 		}
 		
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -367,7 +367,7 @@ class PetriNetImplementationTest {
 			lstExpected.add(p3);
 			Assertions.assertEquals(net.getPlaces(), lstExpected);
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 			fail("Err x : The place created was given incorrect arguments.");
 		}
 		catch (AssertionFailedError e) {
@@ -444,7 +444,7 @@ class PetriNetImplementationTest {
 		catch (AssertionFailedError e) {
 			fail("Err x : The edge has not been removed or the wrong one was removed.");
 		}
-		catch (IncorrectEdgeException e) {
+		catch (PetriNetException e) {
 			fail("Err x : The test parameters are not correct.");
 		}
 		catch (Exception e) {
@@ -491,7 +491,7 @@ class PetriNetImplementationTest {
 		catch (AssertionFailedError e) {
 			fail("Err x : The edge has not been removed or the wrong one was removed.");
 		}
-		catch (IncorrectEdgeException e) {
+		catch (PetriNetException e) {
 			fail("Err x : The test parameters are not correct.");
 		}
 		catch (Exception e) {

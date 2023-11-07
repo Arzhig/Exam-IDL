@@ -1,5 +1,5 @@
 package items.edge;
-import exceptions.BadEntryException;
+import exceptions.IncorrectArgumentException;
 import items.*;
 
 /**
@@ -16,14 +16,14 @@ public class EdgeOut extends Edge{
      * @param place      The place connected by the EdgeOut.
 	 * @throws BadEntryException 
      */
-	public EdgeOut(int value, Place place) throws BadEntryException {
+	public EdgeOut(int value, Place place) throws IncorrectArgumentException {
 		super(value, place);
 		if (value<0) {
-			throw new BadEntryException("EdgeOut can't have a negative value");
+			throw new IncorrectArgumentException("EdgeOut can't have a negative value");
 		}
 		else if (value==0) {
 			if(this.getClass()!=EdgeZero.class) {
-				throw new BadEntryException("Consider adding a EdgeZero instead");
+				throw new IncorrectArgumentException("Consider adding a EdgeZero instead");
 			}
 		}
 	}
@@ -39,7 +39,7 @@ public class EdgeOut extends Edge{
      * Triggers the transition associated with this outgoing edge by removing tokens from the connected place.
 	 * @throws BadEntryException 
      */
-	public void trigger() throws BadEntryException {
+	public void trigger() throws IncorrectArgumentException {
 		this.getPlace().remove(this.getValue());
 	}
 

@@ -1,5 +1,6 @@
 package items.edge;
-import exceptions.BadEntryException;
+
+import exceptions.IncorrectArgumentException;
 import items.*;
 
 /**
@@ -17,7 +18,7 @@ public class EdgeEmpty extends EdgeOut {
      * @param place      The place connected by the `EdgeEmpty`.
      * @throws BadEntryException 
      */
-    public EdgeEmpty(Place place) throws BadEntryException {
+    public EdgeEmpty(Place place) throws IncorrectArgumentException {
         super(1, place);
     }
 
@@ -36,7 +37,7 @@ public class EdgeEmpty extends EdgeOut {
      * @throws BadEntryException 
      */
     @Override
-    public void trigger() throws BadEntryException {
+    public void trigger() throws IncorrectArgumentException {
         this.getPlace().remove(this.getPlace().getToken());
     }
 }

@@ -1,6 +1,6 @@
 package packnp;
 
-import exceptions.IncorrectEdgeException;
+import exceptions.PetriNetException;
 import items.Place;
 import items.Transition;
 import items.edge.EdgeIn;
@@ -34,7 +34,7 @@ public interface PetriNet {
 	* @throws BadEntryException 
 	*/
 	
-	public void add(Place place, Transition transition, int value) throws IncorrectEdgeException;
+	public void add(Place place, Transition transition, int value) throws PetriNetException;
 	
 	/**
 	* Adds a ZeroEdge between a place and a Transition
@@ -43,7 +43,7 @@ public interface PetriNet {
 	* @throws BadEntryException 
 	*/
 	
-	public void addZero(Place place, Transition transition) throws IncorrectEdgeException;
+	public void addZero(Place place, Transition transition) throws PetriNetException;
 	
 	/**
 	* Adds an EmptyEdge between a place and a Transition
@@ -52,7 +52,7 @@ public interface PetriNet {
 	* @throws BadEntryException 
 	*/
 	
-	public void addEmpty(Place place, Transition transition) throws IncorrectEdgeException;
+	public void addEmpty(Place place, Transition transition) throws PetriNetException;
 
 	/**
 	* Adds an EdgeIn between a place and a transition with a specified value
@@ -61,14 +61,14 @@ public interface PetriNet {
 	* @param value		the edge's value
 	* @throws BadEntryException 
 	*/
-	public void add(Transition transition, Place place, int value) throws IncorrectEdgeException;
+	public void add(Transition transition, Place place, int value) throws PetriNetException;
 
 	/**
 	* Launches a step for a transition
 	* @param transition the transition undergoing a step
 	*/
 	
-	public void step(Transition transition) throws IncorrectEdgeException;
+	public void step(Transition transition) throws PetriNetException;
 
 	/**
 	* Removes a place from the petri net

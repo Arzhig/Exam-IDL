@@ -42,7 +42,7 @@ public class Test {
 			net.add(new Place(-1));
 			System.out.println("Err 2.1 : Added a place with a negative amount of tokens");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getPlaces().size() != nbPlaces)
 			System.out.println("Err 2.1 : Modified number of places though invalid token value");
 		}
@@ -91,7 +91,7 @@ public class Test {
 		}
 	}
 	
-	public static void addInEdgesTest() throws BadEntryException {
+	public static void addInEdgesTest() throws IncorrectArgumentException {
 		int nbInEdges = 0;
 
 		System.out.println("Testing addition of inEdges in a PetriNet");
@@ -107,7 +107,7 @@ public class Test {
 			net.add(net.getTransition(0),net.getPlace(0),-1);
 			System.out.println("Err 4.1 : Added an EdgeIn with a negative weight.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getInEdges().size() != nbInEdges) {
 		    	System.out.println("Err 4.1 : Modified number of InEdges though invalid weight value");
 		    }
@@ -134,7 +134,7 @@ public class Test {
 			net.add(net.getTransition(0),net.getPlace(0),3);
 			System.out.println("Err 4.3 : Added an EdgeIn where one already exists.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getInEdges().size() != nbInEdges) {
 		    	System.out.println("Err 4.3 : Modified number of InEdges though invalid InEdge");
 		    }
@@ -145,7 +145,7 @@ public class Test {
 		}
 	}
 
-	public static void addOutEdgesTest() throws BadEntryException {
+	public static void addOutEdgesTest() throws IncorrectArgumentException {
 		int nbOutEdges = 0;
 
 		System.out.println("Testing addition of OutEdges in a PetriNet");
@@ -161,7 +161,7 @@ public class Test {
 			net.add(net.getPlace(0),net.getTransition(0),-1);
 			System.out.println("Err 5.1 : Added an EdgeOut with a negative weight.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getOutEdges().size() != nbOutEdges) {
 		    	System.out.println("Err 5.1 : Modified number of OutEdges though invalid weight value");
 		    }
@@ -188,7 +188,7 @@ public class Test {
 			net.add(net.getPlace(0),net.getTransition(0),3);
 			System.out.println("Err 5.3 : Added an EdgeOut where one already exists.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getOutEdges().size() != nbOutEdges) {
 		    	System.out.println("Err 5.3 : Modified number of OutEdges though invalid OutEdge");
 		    }
@@ -200,7 +200,7 @@ public class Test {
 	}
 	
 	
-	public static void addZeroEdgesTest() throws BadEntryException {
+	public static void addZeroEdgesTest() throws IncorrectArgumentException {
 		int nbZeroEdges = 0;
 		
 		System.out.println("Testing addition of zero edges in a Petri Net");
@@ -228,7 +228,7 @@ public class Test {
 			net.addZero(net.getPlace(0),net.getTransition(0));
 			System.out.println("Err 6.2 : Added a ZeroEdge where one already exists.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getOutEdges().size() != nbZeroEdges) {
 		    	System.out.println("Err 6.2 : Modified number of ZeroEdges though invalid ZeroEdge.");
 		    }
@@ -239,7 +239,7 @@ public class Test {
 		}
 	}
 	
-	public static void addEmptyEdgesTest() throws BadEntryException {
+	public static void addEmptyEdgesTest() throws IncorrectArgumentException {
 		int nbEmptyEdges = 0;
 		
 		System.out.println("Testing addition of empty edges in a Petri Net");
@@ -267,7 +267,7 @@ public class Test {
 			net.addEmpty(net.getPlace(0),net.getTransition(0));
 			System.out.println("Err 7.2 : Added a EmptyEdge where one already exists.");
 		}
-		catch (BadEntryException e) {
+		catch (IncorrectArgumentException e) {
 		    if (net.getTransition(0).getOutEdges().size() != nbEmptyEdges) {
 		    	System.out.println("Err 7.2 : Modified number of EmptyEdges though invalid EmptyEdge.");
 		    }
@@ -278,7 +278,7 @@ public class Test {
 		}
 	}
 	
-	public static void removeTest() throws BadEntryException {
+	public static void removeTest() throws IncorrectArgumentException {
 		int nbPlaces = 0;
 		int nbTransitions = 0;
 		
@@ -315,7 +315,7 @@ public class Test {
 		}
 	}
 	
-	public static void addTests() throws BadEntryException {
+	public static void addTests() throws IncorrectArgumentException {
 		Test.addPlacesTest();
 		Test.addTransitionsTest();
 		Test.addInEdgesTest();
@@ -324,7 +324,7 @@ public class Test {
 		Test.addEmptyEdgesTest();
 	}
 	
-	public static void main(String[] args) throws BadEntryException {
+	public static void main(String[] args) throws IncorrectArgumentException {
 		Test.initializationTest();
 		Test.addTests();
 		Test.removeTest();

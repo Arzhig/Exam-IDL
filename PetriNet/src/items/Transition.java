@@ -2,7 +2,7 @@ package items;
 import java.util.LinkedList;
 import java.util.List;
 
-import exceptions.BadEntryException;
+import exceptions.IncorrectArgumentException;
 import items.edge.EdgeIn;
 import items.edge.EdgeOut;
 
@@ -43,7 +43,7 @@ public class Transition {
 	* Tests if the transition is triggerable, and if it's the case then fires it
 	 * @throws BadEntryException 
 	*/
-	public void step() throws BadEntryException {
+	public void step() throws IncorrectArgumentException {
 		boolean isTriggerable = true;
 		for (EdgeOut outEdge : outEdges) {
 			isTriggerable = outEdge.isTriggerable() && isTriggerable;
