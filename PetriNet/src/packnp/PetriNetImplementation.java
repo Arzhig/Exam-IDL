@@ -125,6 +125,18 @@ public class PetriNetImplementation implements PetriNet{
 
 	@Override
 	public void remove(Place place) {
+		for (Transition transition : this.getTransitions()) {
+			for (int k = 0; k < transition.getOutEdges().size(); k++) {
+				if (transition.getOutEdges().get(k).getPlace().equals(place)) {
+					transition.getOutEdges().remove(k);
+				}
+			}
+			for (int k = 0; k < transition.getInEdges().size(); k++) {
+				if (transition.getInEdges().get(k).getPlace().equals(place)) {
+					transition.getInEdges().remove(k);
+				}
+			}
+		}
 		this.getPlaces().remove(place);
 	}
 
