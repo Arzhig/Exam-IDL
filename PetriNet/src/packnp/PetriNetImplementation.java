@@ -2,7 +2,6 @@ package packnp;
 
 import java.util.LinkedList;
 import java.util.List;
-import exceptions.BadEntryException;
 import exceptions.DoubleEdgeException;
 import exceptions.IncorrectEdgeException;
 import items.Place;

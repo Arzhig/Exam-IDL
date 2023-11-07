@@ -24,9 +24,10 @@ class PetriNetImplementationTest {
 	@Test
 	void testPetriNetImplementation() {
 		System.out.println("Testing  initialisation  of a brand new PetriNet");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
 		try {
 			// A brand new PetriNet should contain no item
-			PetriNetImplementation net = new PetriNetImplementation();
 			
 			Assertions.assertEquals(net.getPlaces().size(), 0);
 			Assertions.assertEquals(net.getTransitions().size(), 0);
@@ -43,22 +44,126 @@ class PetriNetImplementationTest {
 
 	@Test
 	void testGetPlaces() {
-		fail("Not yet implemented");
+		System.out.println("Testing the getter for places");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		List<Place> places = new LinkedList<Place>();
+		
+		try {
+			Place p1 = new Place(3);
+			Place p2 = new Place(5);
+			Place p3 = new Place(2);
+			
+			places.add(p1);
+			places.add(p2);
+			places.add(p3);
+			
+			net.add(p1);
+			net.add(p2);
+			net.add(p3);
+			
+			Assertions.assertEquals(places, net.getPlaces());
+			
+		}
+		catch (BadEntryException e) {
+			fail("The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			fail("The places returned and the places created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Unexpected exception : " + e);
+		    e.printStackTrace();
+		}
 	}
 
 	@Test
 	void testGetPlace() {
-		fail("Not yet implemented");
+		System.out.println("Testing the getter for a place");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		
+		try {
+			Place p1 = new Place(3);
+			Place p2 = new Place(5);
+			Place p3 = new Place(2);
+			
+			net.add(p1);
+			net.add(p2);
+			net.add(p3);
+			
+			Assertions.assertEquals(p2, net.getPlace(1));
+			
+		}
+		catch (BadEntryException e) {
+			fail("The place created was given incorrect arguments.");
+		}
+		catch (AssertionFailedError e) {
+			fail("The place returned and the place created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Unexpected exception : " + e);
+		    e.printStackTrace();
+		}
 	}
 
 	@Test
 	void testGetTransitions() {
-		fail("Not yet implemented");
+		System.out.println("Testing the getter for transitions");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		List<Transition> transitions = new LinkedList<Transition>();
+		
+		try {
+			Transition t1 = new Transition();
+			Transition t2 = new Transition();
+			Transition t3 = new Transition();
+			
+			transitions.add(t1);
+			transitions.add(t2);
+			transitions.add(t3);
+			
+			net.add(t1);
+			net.add(t2);
+			net.add(t3);
+			
+			Assertions.assertEquals(transitions, net.getTransitions());
+			
+		}
+		catch (AssertionFailedError e) {
+			fail("The transitions returned and the transitions created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Unexpected exception : " + e);
+		    e.printStackTrace();
+		}
 	}
 
 	@Test
 	void testGetTransition() {
-		fail("Not yet implemented");
+		System.out.println("Testing the getter for a transition");
+		
+		PetriNetImplementation net = new PetriNetImplementation();
+		
+		try {
+			Transition t1 = new Transition();
+			Transition t2 = new Transition();
+			Transition t3 = new Transition();
+			
+			net.add(t1);
+			net.add(t2);
+			net.add(t3);
+			
+			Assertions.assertEquals(t2, net.getTransition(1));
+			
+		}
+		catch (AssertionFailedError e) {
+			fail("The place returned and the place created are different.");
+		}
+		catch (Exception e) {
+			System.out.println("Unexpected exception : " + e);
+		    e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -74,10 +179,10 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getPlace(0), p1);
 		}
 		catch (AssertionFailedError e) {
-			fail("The place created and the place added are different");
+			fail("The place created and the place added are different.");
 		}
 		catch (BadEntryException e) {
-			fail("The place created was given incorrect arguments");
+			fail("The place created was given incorrect arguments.");
 		}
 		catch (Exception e) {
 			fail("Err x : exception not handled : " + e);
@@ -98,7 +203,7 @@ class PetriNetImplementationTest {
 			Assertions.assertEquals(net.getTransition(0), t1);
 		}
 		catch (AssertionFailedError e) {
-			fail("The transition created and the transition added are different");
+			fail("The transition created and the transition added are different.");
 		}
 		catch (Exception e) {
 			fail("Err x : exception not handled : " + e);
